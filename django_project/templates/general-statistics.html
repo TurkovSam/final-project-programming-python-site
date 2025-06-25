@@ -1,0 +1,64 @@
+{% extends "template.html" %}
+{% load static %}
+
+{% block title %}Общая статистика{% endblock %}
+
+{% block content %}
+    <main>
+        <h1>Общая статистика по вакансиям</h1>
+        <h2>Статистические данные по всем вакансиям </h2>
+
+        <section>
+            <h3>Динамика уровня зарплат по годам</h3>
+            <div class="image-table-wrapper">
+                <img class="block-image" src="{{ salary_by_year.image.url }}" width="640" height="480" alt="График 'Динамика уровня зарплат по годам'">
+                {{ salary_by_year.table_data|safe }}
+            </div>
+        </section>
+
+        <section>
+            <h3>Динамика количества вакансий по годам</h3>
+            <div class="image-table-wrapper">
+                <img class="block-image" src="{{ vacancies_count_by_year.image.url }}" width="640" height="480" alt="График 'Динамика количества вакансий по годам'">
+                {{ vacancies_count_by_year.table_data|safe }}
+            </div>
+        </section>
+
+        <section>
+            <h3>Уровень зарплат по городам (в порядке убывания)</h3>
+            <div class="image-table-wrapper">
+                <img class="block-image" src="{{ salary_by_area.image.url }}" width="640" height="480" alt="График 'Динамика уровня зарплат по городам'">
+                {{ salary_by_area.table_data|safe }}
+            </div>
+        </section>
+
+        <section>
+            <h3>Доля вакансий по городам (в порядке убывания)</h3>
+            <div class="image-table-wrapper">
+                <img class="block-image" src="{{ vacancies_fraction_by_area.image.url }}" width="640" height="480" alt="График 'Доля вакансий по городам (в порядке убывания)'">
+                {{ vacancies_fraction_by_area.table_data|safe }}
+            </div>
+        </section>
+
+        <section>
+            <h3>Топ-20 навыков за всё время по годам</h3>
+            <p class="clue">(Наведите курсор на таблицу/диаграмму, чтобы узнать больше информации)</p>
+
+            <div class="image-table-wrapper">
+                <div class="tooltip-container">
+                    {{ top_20_key_skills_by_year.table_data|safe }}
+                    <p class="tooltip-text">Топ-20 самых высокочастотных навыков за всё время</p>
+                </div>
+                <div class="tooltip-container">
+                    <img class="block-image tooltip" src="{{ top_20_key_skills_by_year.image.url }}" width="640" height="480" alt="График 'Топ-20 навыков по годам. Наиболее высокочастотные навыки'">
+                    <p class="tooltip-text">Распределение самых высокочастотных навыков за всё время для каждого года</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+{% endblock %}
+
+{% block scripts %}
+    <script type="module" src="{% static "js/tooltip.js" %}"></script>
+{% endblock %}

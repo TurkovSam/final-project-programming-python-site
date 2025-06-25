@@ -1,0 +1,27 @@
+{% extends "template.html" %}
+
+{% block title %}География{% endblock %}
+
+{% block content %}
+    <main>
+        <h1>Профессия <span>"{{ vacancy_name }}"</span></h1>
+        <h2>Распределение вакансий по городам</h2>
+
+        <section>
+            <h3>Уровень зарплат по городам (в порядке убывания)</h3>
+            <div class="image-table-wrapper">
+                <img class="block-image" src="{{ salary_by_area.image.url }}" width="640" height="480" alt="График 'Динамика количества вакансий по годам'">
+                {{ salary_by_area.table_data|safe }}
+            </div>
+        </section>
+
+        <section>
+            <h3>Доля вакансий по городам (в порядке убывания)</h3>
+            <div class="image-table-wrapper">
+                <img class="block-image" src="{{ vacancies_fraction_by_area.image.url }}" width="640" height="480" alt="График 'Динамика количества вакансий по годам'">
+                {{ vacancies_fraction_by_area.table_data|safe }}
+            </div>
+        </section>
+
+    </main>
+{% endblock %}
