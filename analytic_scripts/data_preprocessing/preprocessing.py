@@ -25,7 +25,7 @@ def get_all_dates(start_date, end_date):
 def get_all_currencies():
     cb_api = 'https://www.cbr.ru/scripts/XML_daily.asp'
     first_date = '01/01/2003'
-    last_date = '01/12/2024'
+    last_date = '01/12/2025'
     date_lst = get_all_dates(first_date, last_date)
 
     all_currencies = list()
